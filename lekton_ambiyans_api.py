@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -18,7 +19,7 @@ app.add_middleware(
 )
 
 # Claude client
-client = Anthropic()
+client = Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
 # ─────────────────────────────────────────────────────────
 # DATA MODELS
